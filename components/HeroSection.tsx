@@ -225,7 +225,7 @@ export default function HeroSection() {
     "
         >
           <img
-            src="/Images/ICON.png"
+            src="/Images/icon.png"
             alt="Mekark Logo"
             className="
         h-[18px]
