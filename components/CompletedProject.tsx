@@ -205,6 +205,10 @@ export default function CompletedProjects() {
 
         {/* Projects Slider */}
 
+
+
+
+
         <div
           ref={scrollRef}
           className="
