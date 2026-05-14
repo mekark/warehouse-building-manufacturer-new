@@ -60,7 +60,7 @@ export default function ComparisonSection() {
             className="
               font-manrope
               text-[38px]
-              font-extrabold
+              font-bold
               leading-[1.08]
               tracking-[-2px]
               text-black

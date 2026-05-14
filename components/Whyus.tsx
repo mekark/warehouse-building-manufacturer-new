@@ -1,6 +1,8 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { ArrowUp, ArrowRight } from "lucide-react";
+import CountUp from "react-countup";
 
 const REASONS = [
   {
@@ -64,7 +66,11 @@ const STATS = [
 
 export default function WhyChooseUs() {
   return (
-    <section
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
       className="
         w-full
         bg-[#ED2024]
@@ -81,7 +87,11 @@ export default function WhyChooseUs() {
         "
       >
         {/* LEFT */}
-        <div
+        <motion.div
+          initial={{ opacity: 0, x: -80 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
           className="
             bg-[#F3F3F3]
             px-6
@@ -95,7 +105,11 @@ export default function WhyChooseUs() {
         >
           {/* Heading */}
           <div>
-            <p
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
               className="
                 font-manrope
                 text-[40px]
@@ -107,16 +121,19 @@ export default function WhyChooseUs() {
               "
             >
               Top 6 Reasons
-            </p>
+            </motion.p>
 
-            <h2
+            <motion.h2
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.1 }}
               className="
                 mt-2
 
                 font-manrope
                 text-[42px]
-                font-extrabold
-                leading-[92%]
+font-semibold                leading-[92%]
                 text-black
 
                 sm:text-[70px]
@@ -125,19 +142,46 @@ export default function WhyChooseUs() {
               Why Industries
               <br />
               Choose <span className="text-[#ED2024]">Mekark</span>
-            </h2>
+            </motion.h2>
           </div>
 
           {/* List */}
-          <div
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+            variants={{
+              hidden: {},
+              visible: {
+                transition: {
+                  staggerChildren: 0.12,
+                },
+              },
+            }}
             className="
               mt-10
               space-y-0
             "
           >
             {REASONS.map((item, index) => (
-              <div
+              <motion.div
                 key={index}
+                variants={{
+                  hidden: {
+                    opacity: 0,
+                    x: -40,
+                  },
+                  visible: {
+                    opacity: 1,
+                    x: 0,
+                  },
+                }}
+                transition={{
+                  duration: 0.6,
+                }}
+                whileHover={{
+                  x: 6,
+                }}
                 className="
                   flex
                   items-center
@@ -157,14 +201,22 @@ export default function WhyChooseUs() {
                     gap-2
                   "
                 >
-                  <ArrowUp
-                    className="
-                      h-8
-                      w-8
-                      text-[#19B600]
-                    "
-                    strokeWidth={2.5}
-                  />
+                  <motion.div
+                    whileHover={{
+                      scale: 1.15,
+                      rotate: 8,
+                    }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <ArrowUp
+                      className="
+                        h-8
+                        w-8
+                        text-[#19B600]
+                      "
+                      strokeWidth={2.5}
+                    />
+                  </motion.div>
 
                   <span
                     className="
@@ -195,12 +247,16 @@ export default function WhyChooseUs() {
                 >
                   {item.text}
                 </p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {/* Bottom CTA */}
-          <button
+          <motion.button
+            whileHover={{
+              x: 6,
+            }}
+            whileTap={{ scale: 0.98 }}
             className="
               mt-8
               inline-flex
@@ -220,11 +276,15 @@ export default function WhyChooseUs() {
           >
             Engineering Industrial Growth
             <ArrowRight className="h-4 w-4" />
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
 
         {/* RIGHT */}
-        <div
+        <motion.div
+          initial={{ opacity: 0, x: 80 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
           className="
             bg-[#ED2024]
             px-6
@@ -237,25 +297,40 @@ export default function WhyChooseUs() {
           "
         >
           {/* Heading */}
-          <h3
+          <motion.h3
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
             className="
-    max-w-[520px]
+              max-w-[520px]
 
-    font-manrope
-    text-[34.9px]
-    font-bold
-    leading-[38.39px]
-    tracking-[0px]
-    text-black
-  "
+              font-manrope
+              text-[34.9px]
+              font-bold
+              leading-[38.39px]
+              tracking-[0px]
+              text-black
+            "
           >
             Our Client Success
             <br />
             Drives Our Growth
-          </h3>
+          </motion.h3>
 
           {/* Stats Grid */}
-          <div
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{
+              hidden: {},
+              visible: {
+                transition: {
+                  staggerChildren: 0.15,
+                },
+              },
+            }}
             className="
               mt-10
               grid
@@ -266,17 +341,33 @@ export default function WhyChooseUs() {
             "
           >
             {STATS.map((item, index) => (
-              <div
+              <motion.div
                 key={index}
+                variants={{
+                  hidden: {
+                    opacity: 0,
+                    y: 40,
+                    scale: 0.96,
+                  },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    scale: 1,
+                  },
+                }}
+                transition={{
+                  duration: 0.6,
+                }}
+                whileHover={{
+                  y: -6,
+                  scale: 1.02,
+                }}
                 className={`
                   rounded-[24px]
                   p-6
 
                   transition-all
                   duration-300
-
-                  hover:-translate-y-1
-                  hover:scale-[1.02]
 
                   ${
                     item.dark
@@ -290,16 +381,59 @@ export default function WhyChooseUs() {
                 {/* Number */}
                 <h4
                   className="
-                    font-manrope
-                    text-[52px]
-                    font-semibold
-                    leading-[73.17px]
-                    tracking-[0%]
+    font-manrope
+    text-[52px]
+    font-semibold
+    leading-[73.17px]
+    tracking-[0%]
 
-                    sm:text-[70px]
-                  "
+    sm:text-[70px]
+  "
                 >
-                  {item.value}
+                  {item.value.includes("%") ? (
+                    <>
+                      <CountUp
+                        end={Number(item.value.replace("%", ""))}
+                        duration={2.2}
+                        enableScrollSpy
+                        scrollSpyOnce
+                      />
+
+                      <span
+                        className={
+                          item.dark ? "text-[#ED2024]" : "text-[#2A0500]"
+                        }
+                      >
+                        %
+                      </span>
+                    </>
+                  ) : item.value.includes("+") ? (
+                    <>
+                      <CountUp
+                        end={Number(item.value.replace("+", ""))}
+                        duration={2.2}
+                        enableScrollSpy
+                        scrollSpyOnce
+                      />
+
+                      <span
+                        className={
+                          item.dark ? "text-[#ED2024]" : "text-[#2A0500]"
+                        }
+                      >
+                        +
+                      </span>
+                    </>
+                  ) : item.value.includes("/") ? (
+                    item.value
+                  ) : (
+                    <CountUp
+                      end={Number(item.value)}
+                      duration={2.2}
+                      enableScrollSpy
+                      scrollSpyOnce
+                    />
+                  )}
                 </h4>
 
                 {/* Content */}
@@ -317,11 +451,11 @@ export default function WhyChooseUs() {
                 >
                   {item.text}
                 </p>
-              </div>
+              </motion.div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

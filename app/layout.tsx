@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import FloatingWhatsApp from "@/components/FloatingWhatsapp";
 
-import {
-  Geist,
-  Geist_Mono,
-  Manrope,
-} from "next/font/google";
+import { Geist, Geist_Mono, Manrope } from "next/font/google";
 
 import "./globals.css";
 
@@ -79,6 +76,7 @@ export default function RootLayout({
         />
 
         {children}
+        <FloatingWhatsApp />
       </body>
     </html>
   );

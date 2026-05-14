@@ -2,6 +2,7 @@
 
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useRef } from "react";
+import Link from "next/link";
 
 const projects = [
   {
@@ -116,7 +117,7 @@ export default function CompletedProjects() {
               className="
                 font-manrope
                 text-[42px]
-                font-extrabold
+                font-bold
                 leading-[1.05]
                 tracking-[-2px]
                 text-white
@@ -488,7 +489,7 @@ export default function CompletedProjects() {
               className="
           font-manrope
           text-[38px]
-          font-extrabold
+          font-bold
           leading-[1.08]
           tracking-[0px]
           text-white
@@ -522,36 +523,38 @@ export default function CompletedProjects() {
           </div>
 
           {/* CTA Button */}
-          <button
-            className="
-        flex
-        h-[76px]
-        items-center
-        justify-center
+          <Link href="#enquiry-form">
+            <button
+              className="
+      flex
+      h-[76px]
+      items-center
+      justify-center
 
-        rounded-[14px]
-        bg-white
+      rounded-[14px]
+      bg-white
 
-        px-8
+      px-8
 
-        font-manrope
-        text-[20px]
-        font-bold
-        text-[#D51919]
+      font-manrope
+      text-[20px]
+      font-bold
+      text-[#D51919]
 
-        transition-all
-        duration-300
+      transition-all
+      duration-300
 
-        hover:scale-[1.03]
-        hover:bg-[#FF1E1E]
-        hover:text-white
+      hover:scale-[1.03]
+      hover:bg-[#FF1E1E]
+      hover:text-white
 
-        md:min-w-[440px]
-      "
-          >
-            Get Cost & Timeline Blueprint
-            <span className="ml-4 text-[28px]">→</span>
-          </button>
+      md:min-w-[440px]
+    "
+            >
+              Get Cost & Timeline Blueprint
+              <span className="ml-4 text-[28px]">→</span>
+            </button>
+          </Link>
         </div>
       </section>
     </section>

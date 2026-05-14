@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import {
   Truck,
   ShoppingCart,
@@ -51,7 +52,11 @@ const industries = [
 
 export default function Industry() {
   return (
-    <section
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
       className="
         relative
         overflow-hidden
@@ -96,7 +101,11 @@ export default function Industry() {
         "
       >
         {/* Heading */}
-        <div
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
           className="
             mb-[70px]
             text-center
@@ -106,7 +115,7 @@ export default function Industry() {
             className="
               font-manrope
               text-[52px]
-              font-extrabold
+              font-bold
               leading-[1.05]
               tracking-[-2px]
               text-white
@@ -135,10 +144,21 @@ export default function Industry() {
             As a leading warehouse construction company in Chennai, Mekark
             delivers fully integrated warehouse construction services.
           </p>
-        </div>
+        </motion.div>
 
         {/* Cards */}
-        <div
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.12,
+              },
+            },
+          }}
           className="
             grid
             gap-8
@@ -151,8 +171,25 @@ export default function Industry() {
             const Icon = industry.icon;
 
             return (
-              <div
+              <motion.div
                 key={index}
+                variants={{
+                  hidden: {
+                    opacity: 0,
+                    y: 60,
+                  },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                  },
+                }}
+                transition={{
+                  duration: 0.7,
+                  ease: "easeOut",
+                }}
+                whileHover={{
+                  y: -10,
+                }}
                 className={`
                   relative
                   overflow-hidden
@@ -163,10 +200,13 @@ export default function Industry() {
                   p-8
                   transition-all
                   duration-500
-                  hover:-translate-y-2
                   hover:border-[#FF1E1E]
 
-                  ${industry.glow ? "shadow-[0_0_80px_rgba(255,0,0,0.18)]" : ""}
+                  ${
+                    industry.glow
+                      ? "shadow-[0_0_80px_rgba(255,0,0,0.18)]"
+                      : ""
+                  }
                 `}
               >
                 {/* Glow */}
@@ -186,7 +226,12 @@ export default function Industry() {
                 />
 
                 {/* Icon */}
-                <div
+                <motion.div
+                  whileHover={{
+                    scale: 1.08,
+                    rotate: -3,
+                  }}
+                  transition={{ duration: 0.3 }}
                   className="
                     mb-7
                     flex
@@ -199,21 +244,25 @@ export default function Industry() {
                     shadow-[0_0_40px_rgba(255,0,0,0.35)]
                   "
                 >
-                  <Icon size={34} className="text-white" strokeWidth={2.3} />
-                </div>
+                  <Icon
+                    size={34}
+                    className="text-white"
+                    strokeWidth={2.3}
+                  />
+                </motion.div>
 
                 {/* Title */}
                 <h3
                   className="
-    mb-4
+                    mb-4
 
-    font-manrope
-    text-[17px]
-    font-bold
-    leading-[22.1px]
-    tracking-[0%]
-    text-white
-  "
+                    font-manrope
+                    text-[17px]
+                    font-bold
+                    leading-[22.1px]
+                    tracking-[0%]
+                    text-white
+                  "
                 >
                   {industry.title}
                 </h3>
@@ -221,21 +270,21 @@ export default function Industry() {
                 {/* Description */}
                 <p
                   className="
-    font-manrope
-    text-[13.5px]
-    font-normal
-    leading-[20px]
-    tracking-[0%]
-    text-white/65
-  "
+                    font-manrope
+                    text-[13.5px]
+                    font-normal
+                    leading-[20px]
+                    tracking-[0%]
+                    text-white/65
+                  "
                 >
                   {industry.description}
                 </p>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

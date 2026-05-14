@@ -488,16 +488,18 @@ export default function BlueprintSection() {
 
         {/* FORM CARD */}
         <div
+          id="enquiry-form"
           className="
-            w-full
-            max-w-[600px]
-            rounded-[30px]
-            bg-white
-            p-6
-            shadow-[0_20px_60px_rgba(0,0,0,0.35)]
-            sm:p-10
-            lg:p-12
-          "
+    w-full
+    max-w-[600px]
+    rounded-[30px]
+    bg-white
+    p-6
+    shadow-[0_20px_60px_rgba(0,0,0,0.35)]
+
+    sm:p-10
+    lg:p-12
+  "
         >
           <h3
             className="
@@ -556,48 +558,77 @@ export default function BlueprintSection() {
               )}
             </div>
 
-            {/* PHONE */}
-            <div>
-              <label className="mb-2 block font-manrope text-[15px] font-semibold text-[#555555]">
-                Phone Number
-              </label>
+            <div
+              className="
+    grid
+    gap-5
 
-              <input
-                type="tel"
-                name="phoneNumber"
-                placeholder="Enter Your Number"
-                value={formValues.phoneNumber}
-                onChange={handleInputChange}
-                className={inputClass(formErrors.phoneNumber)}
-              />
+    md:grid-cols-2
+  "
+            >
+              {/* PHONE */}
+              <div>
+                <label
+                  className="
+        mb-2
+        block
 
-              {formErrors.phoneNumber && (
-                <p className="mt-2 text-[13px] text-[#C4161C]">
-                  {formErrors.phoneNumber}
-                </p>
-              )}
-            </div>
+        font-manrope
+        text-[15px]
+        font-semibold
+        text-[#555555]
+      "
+                >
+                  Phone Number
+                </label>
 
-            {/* COMPANY */}
-            <div>
-              <label className="mb-2 block font-manrope text-[15px] font-semibold text-[#555555]">
-                Company Name
-              </label>
+                <input
+                  type="tel"
+                  name="phoneNumber"
+                  placeholder="Enter Your Number"
+                  value={formValues.phoneNumber}
+                  onChange={handleInputChange}
+                  className={inputClass(formErrors.phoneNumber)}
+                />
 
-              <input
-                type="text"
-                name="companyName"
-                placeholder="Enter Your company"
-                value={formValues.companyName}
-                onChange={handleInputChange}
-                className={inputClass(formErrors.companyName)}
-              />
+                {formErrors.phoneNumber && (
+                  <p className="mt-2 text-[13px] text-[#C4161C]">
+                    {formErrors.phoneNumber}
+                  </p>
+                )}
+              </div>
 
-              {formErrors.companyName && (
-                <p className="mt-2 text-[13px] text-[#C4161C]">
-                  {formErrors.companyName}
-                </p>
-              )}
+              {/* COMPANY */}
+              <div>
+                <label
+                  className="
+        mb-2
+        block
+
+        font-manrope
+        text-[15px]
+        font-semibold
+        text-[#555555]
+      "
+                >
+                  Company Name
+                </label>
+
+                <input
+                  type="text"
+                  name="companyName"
+                  placeholder="Enter Your company"
+                  value={formValues.companyName}
+                  onChange={handleInputChange}
+                  className={inputClass(formErrors.companyName)}
+                />
+
+                {formErrors.companyName && (
+                  <p className="mt-2 text-[13px] text-[#C4161C]">
+                    {formErrors.companyName}
+                  </p>
+                )}
+              </div>
             </div>
 
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
@@ -693,10 +724,9 @@ export default function BlueprintSection() {
                   py-3
                   text-[14px]
                   font-medium
-                  ${
-                    statusMessage.tone === "success"
-                      ? "border-green-200 bg-green-50 text-green-700"
-                      : "border-red-200 bg-red-50 text-red-700"
+                  ${statusMessage.tone === "success"
+                    ? "border-green-200 bg-green-50 text-green-700"
+                    : "border-red-200 bg-red-50 text-red-700"
                   }
                 `}
               >

@@ -1,5 +1,8 @@
 "use client";
 
+import { motion } from "framer-motion";
+import { Clock3 } from "lucide-react";
+
 const projects = [
   {
     category: "FMCG",
@@ -29,7 +32,11 @@ const projects = [
 
 export default function ProjectsSection() {
   return (
-    <section
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
       className="
         relative
         overflow-hidden
@@ -42,7 +49,8 @@ export default function ProjectsSection() {
         py-[90px]
 
         lg:px-[120px]
-py-[72px]      "
+        lg:py-[72px]
+      "
     >
       {/* BACKGROUND IMAGE */}
       <div
@@ -56,12 +64,11 @@ py-[72px]      "
           src="/Project/BG.jpeg"
           alt="Warehouse Background"
           className="
-    h-full
-    w-full
-    object-cover
-
-    opacity-[0.92]
-  "
+            h-full
+            w-full
+            object-cover
+            opacity-[0.92]
+          "
         />
 
         {/* OVERLAY */}
@@ -70,8 +77,8 @@ py-[72px]      "
             absolute
             inset-0
 
-    bg-white/10
-    backdrop-blur-[0.5px]
+            bg-white/10
+            backdrop-blur-[0.5px]
           "
         />
       </div>
@@ -87,7 +94,11 @@ py-[72px]      "
         "
       >
         {/* TOP LABEL */}
-        <div
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
           className="
             mb-5
             flex
@@ -111,34 +122,50 @@ py-[72px]      "
           >
             Real Projects
           </span>
-        </div>
+        </motion.div>
 
         {/* TITLE */}
-        <h2
+        <motion.h2
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
           className="
             max-w-[1200px]
 
             font-manrope
-            text-[42px]
-            font-[800]
-
-            leading-[1.05]
-
+            text-[50px]
+            font-bold
+            leading-[48px]
+            tracking-[0px]
             text-black
 
-            md:text-[60px]
+            md:text-[50px]
+            md:leading-[48px]
 
-            lg:text-[74px]
+            lg:text-[45px]
+            lg:leading-[48px]
           "
         >
           Execution That Directly Impacts{" "}
           <span className="text-[#D71920]">Business</span>
           <br />
           <span className="text-[#D71920]">Performance</span>
-        </h2>
+        </motion.h2>
 
         {/* PROJECT CARDS */}
-        <div
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.15,
+              },
+            },
+          }}
           className="
             mt-[70px]
 
@@ -150,34 +177,49 @@ py-[72px]      "
           "
         >
           {projects.map((project, index) => (
-            <div
+            <motion.div
               key={index}
+              variants={{
+                hidden: {
+                  opacity: 0,
+                  y: 60,
+                },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                },
+              }}
+              transition={{
+                duration: 0.7,
+                ease: "easeOut",
+              }}
               className="
-  group
-  overflow-hidden
+                group
+                overflow-hidden
 
-  rounded-[24px]
+                rounded-[24px]
 
-  border
-  border-transparent
+                border
+                border-transparent
 
-  bg-white
+                bg-white
 
-  shadow-[0_10px_30px_rgba(0,0,0,0.08)]
+                shadow-[0_10px_30px_rgba(0,0,0,0.08)]
 
-  transition-all
-  duration-500
-  ease-out
+                transition-all
+                duration-500
+                ease-out
 
-  hover:-translate-y-2
-  hover:border-[#D71920]
-  hover:shadow-[0_20px_50px_rgba(215,25,32,0.18)]
-"
+                hover:-translate-y-2
+                hover:border-[#D71920]
+                hover:shadow-[0_20px_50px_rgba(215,25,32,0.18)]
+              "
             >
               {/* IMAGE */}
               <div className="relative overflow-hidden">
-                {" "}
-                <img
+                <motion.img
+                  whileHover={{ scale: 1.06 }}
+                  transition={{ duration: 0.6 }}
                   src={project.image}
                   alt={project.title}
                   className="
@@ -186,6 +228,7 @@ py-[72px]      "
                     object-cover
                   "
                 />
+
                 {/* CATEGORY */}
                 <div
                   className="
@@ -195,7 +238,7 @@ py-[72px]      "
 
                     rounded-full
 
-                    bg-[#D71920]
+                    bg-[#BB0011]
 
                     px-5
                     py-2
@@ -219,50 +262,71 @@ py-[72px]      "
               <div className="p-7">
                 <h3
                   className="
+                    mb-[12px]
+                    max-w-[240px]
+
                     font-manrope
-                    text-[34px]
-                    font-[800]
-
-                    leading-[1.15]
-
+                    text-[14px]
+                    font-extrabold
+                    leading-[14px]
+                    tracking-[-0.4px]
                     text-black
+
+                    sm:text-[16px]
+                    sm:leading-[18px]
+
+                    lg:text-[20px]
+                    lg:leading-[39px]
+                    lg:tracking-[-1px]
                   "
                 >
                   {project.title}
                 </h3>
 
-                <p
+                <div
                   className="
                     mt-4
+                    flex
+                    items-center
+                    gap-1.5
 
                     font-manrope
-                    text-[16px]
-                    font-semibold
-
-                    text-[#D71920]
+                    text-[11px]
+                    font-medium
+                    leading-[17px]
+                    text-[#C4161C]
                   "
                 >
-                  ⊙ {project.subtitle}
-                </p>
+                  <Clock3 size={12} strokeWidth={2.2} />
+
+                  <span>{project.subtitle}</span>
+                </div>
 
                 <p
                   className="
-                    mt-5
+                    mt-[18px]
 
                     font-manrope
-                    text-[20px]
-
-                    leading-[1.7]
+                    text-[11px]
+                    font-medium
+                    leading-[17px]
+                    tracking-[0%]
 
                     text-[#5E5E66]
+
+                    sm:text-[12px]
+                    sm:leading-[18px]
+
+                    lg:text-[16px]
+                    lg:leading-[34px]
                   "
                 >
                   {project.description}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* BUTTON */}
         <div
@@ -273,7 +337,12 @@ py-[72px]      "
             justify-center
           "
         >
-          <button
+          <motion.button
+            whileHover={{
+              scale: 1.03,
+              y: -2,
+            }}
+            whileTap={{ scale: 0.98 }}
             className="
               rounded-[14px]
               border
@@ -298,9 +367,9 @@ py-[72px]      "
             "
           >
             View Project Breakdown →
-          </button>
+          </motion.button>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

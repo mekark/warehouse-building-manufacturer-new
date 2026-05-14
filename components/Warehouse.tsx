@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import {
   Building2,
   Layers3,
@@ -64,7 +65,11 @@ const services = [
 
 export default function Warehouse() {
   return (
-    <section
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
       className="
         relative
         overflow-hidden
@@ -113,12 +118,18 @@ export default function Warehouse() {
         "
       >
         {/* Heading */}
-        <div className="text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="text-center"
+        >
           <h2
             className="
               font-manrope
               text-[38px]
-              font-extrabold
+              font-bold
               leading-[1.1]
               tracking-[-2px]
               text-black
@@ -166,10 +177,21 @@ export default function Warehouse() {
             As a leading warehouse construction company in Chennai, Mekark
             delivers fully integrated warehouse construction services.
           </p>
-        </div>
+        </motion.div>
 
         {/* Grid */}
-        <div
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.1,
+              },
+            },
+          }}
           className="
             mt-[60px]
             grid
@@ -186,112 +208,132 @@ export default function Warehouse() {
             const Icon = service.icon;
 
             return (
-              <div
+              <motion.div
                 key={index}
+                variants={{
+                  hidden: {
+                    opacity: 0,
+                    y: 50,
+                  },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                  },
+                }}
+                transition={{
+                  duration: 0.6,
+                  ease: "easeOut",
+                }}
+                whileHover={{
+                  y: -8,
+                }}
                 className="
-    group
-    relative
+                  group
+                  relative
 
-    border-[#D8D8D8]
-    p-6
+                  border-[#D8D8D8]
+                  p-6
 
-    transition-all
-    duration-500
+                  transition-all
+                  duration-500
 
-    hover:z-10
-    hover:-translate-y-2
-    hover:bg-white
-    hover:shadow-[0_20px_60px_rgba(0,0,0,0.08)]
+                  hover:z-10
+                  hover:bg-white
+                  hover:shadow-[0_20px_60px_rgba(0,0,0,0.08)]
 
-    md:min-h-[300px]
+                  md:min-h-[300px]
 
-    lg:border-r
-    lg:border-b
-    lg:p-10
+                  lg:border-b
+                  lg:border-r
+                  lg:p-10
 
-    [&:nth-child(4n)]:border-r-0
-    [&:nth-last-child(-n+4)]:border-b-0
-  "
+                  [&:nth-child(4n)]:border-r-0
+                  [&:nth-last-child(-n+4)]:border-b-0
+                "
               >
                 {/* Hover Glow */}
                 <div
                   className="
-      absolute
-      inset-0
-      rounded-[0px]
-      bg-gradient-to-br
-      from-[#C51414]/5
-      via-transparent
-      to-transparent
+                    absolute
+                    inset-0
+                    rounded-[0px]
+                    bg-gradient-to-br
+                    from-[#C51414]/5
+                    via-transparent
+                    to-transparent
 
-      opacity-0
-      transition-opacity
-      duration-500
+                    opacity-0
+                    transition-opacity
+                    duration-500
 
-      group-hover:opacity-100
-    "
+                    group-hover:opacity-100
+                  "
                 />
 
                 {/* Icon */}
-                <div
+                <motion.div
+                  whileHover={{
+                    scale: 1.08,
+                    rotate: -4,
+                  }}
+                  transition={{ duration: 0.3 }}
                   className="
-      relative
-      z-10
-      mb-7
+                    relative
+                    z-10
+                    mb-7
 
-      flex
-      h-[62px]
-      w-[62px]
-      items-center
-      justify-center
+                    flex
+                    h-[62px]
+                    w-[62px]
+                    items-center
+                    justify-center
 
-      rounded-[18px]
-      bg-[#F6D5D5]
+                    rounded-[18px]
+                    bg-[#F6D5D5]
 
-      shadow-[0_12px_30px_rgba(197,20,20,0.12)]
+                    shadow-[0_12px_30px_rgba(197,20,20,0.12)]
 
-      transition-all
-      duration-500
+                    transition-all
+                    duration-500
 
-      group-hover:scale-110
-      group-hover:bg-[#C51414]
-    "
+                    group-hover:bg-[#C51414]
+                  "
                 >
                   <Icon
                     size={28}
                     className="
-        text-black
-        transition-colors
-        duration-500
+                      text-black
+                      transition-colors
+                      duration-500
 
-        group-hover:text-white
-      "
+                      group-hover:text-white
+                    "
                     strokeWidth={2.2}
                   />
-                </div>
+                </motion.div>
 
                 {/* Title */}
                 <h3
                   className="
-      relative
-      z-10
-      mb-4
+                    relative
+                    z-10
+                    mb-4
 
-      font-manrope
-      text-[28px]
-      font-bold
-      leading-[1.15]
-      tracking-[-1px]
-      text-black
+                    font-manrope
+                    text-[28px]
+                    font-bold
+                    leading-[1.15]
+                    tracking-[-1px]
+                    text-black
 
-      transition-colors
-      duration-500
+                    transition-colors
+                    duration-500
 
-      group-hover:text-[#C51414]
+                    group-hover:text-[#C51414]
 
-      md:text-[22px]
-      lg:text-[20px]
-    "
+                    md:text-[22px]
+                    lg:text-[20px]
+                  "
                 >
                   {service.title}
                 </h3>
@@ -299,30 +341,30 @@ export default function Warehouse() {
                 {/* Description */}
                 <p
                   className="
-      relative
-      z-10
+                    relative
+                    z-10
 
-      font-manrope
-      text-[15px]
-      font-normal
-      leading-[26px]
-      text-[#666666]
+                    font-manrope
+                    text-[15px]
+                    font-normal
+                    leading-[26px]
+                    text-[#666666]
 
-      transition-colors
-      duration-500
+                    transition-colors
+                    duration-500
 
-      group-hover:text-[#444]
+                    group-hover:text-[#444]
 
-      lg:text-[16px]
-    "
+                    lg:text-[16px]
+                  "
                 >
                   {service.description}
                 </p>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

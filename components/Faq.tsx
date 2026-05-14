@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { Plus, X } from "lucide-react";
 
 const FAQS = [
@@ -41,7 +42,11 @@ export default function FAQSection() {
   const [active, setActive] = useState(0);
 
   return (
-    <section
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
       className="
         overflow-hidden
         bg-[#F5F5F5]
@@ -70,7 +75,11 @@ export default function FAQSection() {
           "
         >
           {/* QUOTE MARK */}
-          <div
+          <motion.div
+            initial={{ opacity: 0, scale: 0.7 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
             className="
               absolute
               left-0
@@ -86,7 +95,7 @@ export default function FAQSection() {
             "
           >
             “
-          </div>
+          </motion.div>
 
           <div
             className="
@@ -96,7 +105,11 @@ export default function FAQSection() {
             "
           >
             {/* LABEL */}
-            <div
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
               className="
                 mb-5
                 flex
@@ -124,37 +137,53 @@ export default function FAQSection() {
               >
                 What Business Leaders Say
               </span>
-            </div>
+            </motion.div>
 
             {/* QUOTE */}
-            <h2
+            <motion.h2
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
               className="
-                font-manrope
-                text-[34px]
-                font-extrabold
-                leading-[38px]
-                tracking-[-1px]
-                text-black
+    max-w-[928px]
 
-                sm:text-[48px]
-                sm:leading-[52px]
+    font-manrope
+    text-[32px]
+    font-bold
+    leading-[36px]
+    tracking-[-1.6px]
+    text-black
 
-                lg:text-[64px]
-                lg:leading-[66px]
-              "
+    sm:text-[44px]
+    sm:leading-[48px]
+    sm:tracking-[-2px]
+
+    lg:text-[56.2px]
+    lg:leading-[57.12px]
+    lg:tracking-[-2.72px]
+  "
             >
               “Mekark delivered{" "}
               <span className="text-[#ED2024]">ahead of schedule</span>
               <br />
-              with complete control over quality and execution. Their{" "}
+              with complete control over quality and
+              <br />
+              execution. Their{" "}
               <span className="font-light text-[#8F8F8F]">
                 in-house capability
               </span>{" "}
-              is a major advantage.”
-            </h2>
+              is a
+              <br />
+              major advantage.”
+            </motion.h2>
 
             {/* AUTHOR */}
-            <div
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
               className="
                 mt-10
                 flex
@@ -162,7 +191,11 @@ export default function FAQSection() {
                 gap-4
               "
             >
-              <div
+              <motion.div
+                whileHover={{
+                  scale: 1.08,
+                  rotate: -3,
+                }}
                 className="
                   flex
                   h-[56px]
@@ -180,7 +213,7 @@ export default function FAQSection() {
                 "
               >
                 OH
-              </div>
+              </motion.div>
 
               <div>
                 <p
@@ -207,11 +240,15 @@ export default function FAQSection() {
                   Logistics Company
                 </p>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* RIGHT QUOTE */}
-          <div
+          <motion.div
+            initial={{ opacity: 0, scale: 0.7 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
             className="
               absolute
               bottom-0
@@ -229,7 +266,7 @@ export default function FAQSection() {
             "
           >
             ”
-          </div>
+          </motion.div>
         </div>
       </div>
 
@@ -259,47 +296,63 @@ export default function FAQSection() {
           "
         >
           {/* LEFT IMAGE */}
-          <div
+          <motion.div
+            initial={{ opacity: 0, x: -80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
             className="
-    relative
+              relative
 
-    hidden
+              hidden
 
-    overflow-visible
+              overflow-visible
 
-    lg:block
-  "
+              lg:block
+            "
           >
-            <div
+            <motion.div
+              whileHover={{
+                scale: 1.02,
+              }}
               className="
-      absolute
-      left-[-520px]
-      top-[-140px]
+                absolute
+                left-[-520px]
+                top-[-140px]
 
-      h-[980px]
-      w-[1180px]
+                h-[980px]
+                w-[1180px]
 
-      xl:left-[-460px]
-      xl:w-[1240px]
-    "
+                xl:left-[-460px]
+                xl:w-[1240px]
+              "
             >
               <img
                 src="/Images/FAQ 1.png"
                 alt="FAQ Illustration"
                 className="
-        h-full
-        w-full
-        object-contain
-        object-left-top
-      "
+                  h-full
+                  w-full
+                  object-contain
+                  object-left-top
+                "
               />
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* RIGHT FAQ */}
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: 80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
             {/* LABEL */}
-            <div
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
               className="
                 mb-6
                 flex
@@ -327,16 +380,42 @@ export default function FAQSection() {
               >
                 FAQ
               </span>
-            </div>
+            </motion.div>
 
             {/* FAQ ITEMS */}
-            <div className="space-y-1">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: {
+                    staggerChildren: 0.08,
+                  },
+                },
+              }}
+              className="space-y-1"
+            >
               {FAQS.map((faq, index) => {
                 const isActive = active === index;
 
                 return (
-                  <div
+                  <motion.div
                     key={faq.question}
+                    variants={{
+                      hidden: {
+                        opacity: 0,
+                        y: 20,
+                      },
+                      visible: {
+                        opacity: 1,
+                        y: 0,
+                      },
+                    }}
+                    transition={{
+                      duration: 0.5,
+                    }}
                     className="
                       border-b
                       border-[#E3E3E3]
@@ -372,7 +451,13 @@ export default function FAQSection() {
                         {faq.question}
                       </span>
 
-                      <div
+                      <motion.div
+                        animate={{
+                          rotate: isActive ? 180 : 0,
+                        }}
+                        transition={{
+                          duration: 0.3,
+                        }}
                         className={`
                           flex
                           h-[34px]
@@ -398,44 +483,44 @@ export default function FAQSection() {
                         ) : (
                           <Plus className="h-4 w-4" />
                         )}
-                      </div>
+                      </motion.div>
                     </button>
 
                     {/* CONTENT */}
-                    <div
-                      className={`
-                        overflow-hidden
-                        transition-all
-                        duration-500
-
-                        ${
-                          isActive
-                            ? "max-h-[300px] pb-8 opacity-100"
-                            : "max-h-0 opacity-0"
-                        }
-                      `}
+                    <motion.div
+                      initial={false}
+                      animate={{
+                        height: isActive ? "auto" : 0,
+                        opacity: isActive ? 1 : 0,
+                      }}
+                      transition={{
+                        duration: 0.4,
+                      }}
+                      className="overflow-hidden"
                     >
-                      <p
-                        className="
-                          max-w-[720px]
+                      <div className="pb-8">
+                        <p
+                          className="
+                            max-w-[720px]
 
-                          font-manrope
-                          text-[16px]
-                          font-normal
-                          leading-[30px]
-                          text-[#707070]
-                        "
-                      >
-                        {faq.answer}
-                      </p>
-                    </div>
-                  </div>
+                            font-manrope
+                            text-[16px]
+                            font-normal
+                            leading-[30px]
+                            text-[#707070]
+                          "
+                        >
+                          {faq.answer}
+                        </p>
+                      </div>
+                    </motion.div>
+                  </motion.div>
                 );
               })}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

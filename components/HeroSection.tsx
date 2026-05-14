@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import { ChangeEvent, FormEvent, useState } from "react";
+import Link from "next/link";
+import { motion } from "framer-motion";
 
 const stats = [
   {
@@ -47,6 +49,12 @@ const INITIAL_FORM_VALUES: FormValues = {
   sqft: "",
   projectDetails: "",
 };
+
+const WHATSAPP_NUMBER = "919790924754";
+const WHATSAPP_MESSAGE =
+  "Hello Mekark, I would like to discuss about my warehouse construction project.";
+const PHONE_NUMBER = "9790924754";
+
 export default function HeroSection() {
   const [formValues, setFormValues] = useState<FormValues>(INITIAL_FORM_VALUES);
 
@@ -80,32 +88,26 @@ export default function HeroSection() {
 
     const phoneDigits = formValues.phoneNumber.replace(/\D/g, "");
 
+    // NAME (Mandatory)
     if (!formValues.name.trim()) {
       errors.name = "This field is required.";
     }
 
-    if (!formValues.email.trim()) {
-      errors.email = "This field is required.";
-    } else if (!EMAIL_REGEX.test(formValues.email)) {
-      errors.email = "Enter valid email.";
-    }
-
+    // PHONE (Mandatory)
     if (!formValues.phoneNumber.trim()) {
       errors.phoneNumber = "This field is required.";
     } else if (phoneDigits.length < 10 || phoneDigits.length > 15) {
       errors.phoneNumber = "Enter valid phone number.";
     }
 
-    if (!formValues.companyName.trim()) {
-      errors.companyName = "This field is required.";
-    }
-
-    if (!formValues.location.trim()) {
-      errors.location = "This field is required.";
-    }
-
+    // SQFT (Mandatory)
     if (!formValues.sqft.trim()) {
       errors.sqft = "This field is required.";
+    }
+
+    // EMAIL (Optional but validate if entered)
+    if (formValues.email.trim() && !EMAIL_REGEX.test(formValues.email)) {
+      errors.email = "Enter valid email.";
     }
 
     setFormErrors(errors);
@@ -269,11 +271,11 @@ export default function HeroSection() {
       sm:text-[15px]
     "
         >
-          <span className="text-[12px] sm:text-[14px]">⚡</span>
-
-          <span className="whitespace-nowrap">Get Free Quote</span>
+          <Link href="#enquiry-form">
+            <span className="whitespace-nowrap">Get Free Quote</span>
+          </Link>{" "}
         </button>
-      </header> 
+      </header>
       <div className="w-full">
         <div
           className="
@@ -324,17 +326,19 @@ lg:min-h-[750px]
               flex
               justify-end
 
-              bg-[#F5F5F5]
+    bg-[#F5F5F5]
 
-              px-5
-              py-12
+    px-5
+    pt-[110px]
+    pb-12
 
-              sm:px-8
+    sm:px-8
+    sm:pt-[120px]
 
-              lg:pl-[120px]
-              lg:pr-[70px]
-              lg:py-[72px]
-            "
+    lg:pl-[120px]
+    lg:pr-[70px]
+    lg:py-[72px]
+  "
           >
             {/* ANGLED SHAPE */}
             <div
@@ -358,194 +362,558 @@ lg:min-h-[750px]
             />
 
             {/* CONTENT */}
-            <div
+            <motion.div
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
               className="
-                relative
-                z-20
+    relative
+    z-20
 
-                w-full
-                max-w-[760px]
+    w-full
+    max-w-[760px]
 
-                flex
-                flex-col
-                justify-start
-                  pt-[0px]
-
-              "
+    flex
+    flex-col
+    justify-start
+    pt-[0px]
+  "
             >
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="mb-6"
+              >
+                <div
+                  className="
+      inline-flex
+      max-w-full
+      items-center
+      gap-2
+
+      rounded-full
+      border
+      border-[#EDB8B8]
+
+      bg-[#FFF5F5]
+
+      px-3
+      py-2
+
+      sm:px-4
+      sm:py-2.5
+    "
+                >
+                  {/* ICON */}
+                  <div
+                    className="
+        flex
+        h-[12px]
+        w-[12px]
+        shrink-0
+        items-center
+        justify-center
+
+        rounded-full
+        bg-[#ED2024]
+
+        sm:h-[14px]
+        sm:w-[14px]
+      "
+                  >
+                    <span
+                      className="
+          text-[7px]
+          font-bold
+          text-white
+
+          sm:text-[8px]
+        "
+                    ></span>
+                  </div>
+
+                  {/* TEXT */}
+                  <span
+                    className="
+        font-manrope
+        text-[8px]
+        font-bold
+        uppercase
+        leading-[140%]
+        tracking-[1px]
+        text-[#D91F26]
+
+        sm:whitespace-nowrap
+        sm:text-[11px]
+        sm:tracking-[2px]
+      "
+                  >
+                    India’s No.1 PEB Warehouse Construction Company
+                  </span>
+                </div>
+              </motion.div>
               {/* HEADING */}
-              <div>
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
+              >
                 <h1
                   className="
-                    text-[44px]
-                    font-bold
-                    leading-[95%]
-                    tracking-[-2px]
-                    text-black
+      text-[44px]
+      font-bold
+      leading-[105%]
+      tracking-[-2px]
+      text-black
 
-                    sm:text-[58px]
+      sm:text-[52px]
 
-                    lg:text-[86px]
-                  "
+      lg:text-[65px]
+    "
                 >
-                  Go Operational in
+                  Build Your Warehouse & Go Operational in
                 </h1>
 
                 <div className="mt-3 flex flex-wrap items-end gap-4">
                   <span
                     className="
-                      relative
+        relative
 
-                      text-[58px]
-                      font-bold
-                      leading-[90%]
-                      tracking-[-2px]
-                      text-[#ED2024]
+        text-[58px]
+        font-bold
+        leading-[90%]
+        tracking-[-2px]
+        text-[#ED2024]
 
-                      sm:text-[78px]
+        sm:text-[72px]
 
-                      lg:text-[96px]
-                    "
+        lg:text-[86px]
+      "
                   >
                     120 Days
                   </span>
 
                   <span
                     className="
-                      mb-3
-                      text-[24px]
-                      font-light
-                      leading-[100%]
-                      text-[#5E5E5E]
+        mb-3
+        text-[32px]
+        font-light
+        leading-[100%]
+        text-[#5E5E5E]
 
-                      sm:text-[30px]
+        sm:text-[34px]
 
-                      lg:text-[42px]
-                    "
+        lg:text-[42px]
+      "
                   >
                     not 9-12 months.
                   </span>
                 </div>
-              </div>
+              </motion.div>
 
               {/* DESCRIPTION */}
-              <p
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.15 }}
                 className="
-                  mt-8
-                  max-w-[720px]
+      mt-8
+      max-w-[720px]
 
-                  text-[18px]
-                  font-normal
-                  leading-[1.7]
-                  text-[#5F5F5F]
-                "
+      text-[18px]
+      font-normal
+      leading-[1.7]
+      text-[#5F5F5F]
+    "
               >
-                We design, manufacture and deliver high-performance{" "}
-                <span className="font-semibold text-black">
-                  PEB warehouse buildings
-                </span>{" "}
-                with complete in-house control — eliminating delays, cost
-                overruns, and vendor dependency.
-              </p>
+                From concept to operational warehouse — Mekark delivers turnkey
+                warehouse construction including design, PEB manufacturing,
+                civil execution, MEP, and final handover.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.3 }}
+                className="
+    mt-6
+    space-y-3
+  "
+              >
+                {[
+                  "End-to-End Project Ownership",
+                  "Transparent Cost & No Hidden Charges",
+                  "Timeline Management",
+                ].map((item, index) => (
+                  <div
+                    key={index}
+                    className="
+        flex
+        items-center
+        gap-3
+      "
+                  >
+                    <span
+                      className="
+          text-[15px]
+          font-bold
+          text-[#ED2024]
+        "
+                    >
+                      ✔
+                    </span>
+
+                    <p
+                      className="
+          font-manrope
+          text-[14px]
+          font-medium
+          leading-[100%]
+          text-[#2A2A2A]
+        "
+                    >
+                      {item}
+                    </p>
+                  </div>
+                ))}
+              </motion.div>
 
               {/* SMALL TEXT */}
-              <p
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.25 }}
                 className="
-                  mt-7
+      mt-7
 
-                  text-[11px]
-                  font-bold
-                  uppercase
-                  tracking-[5px]
-                  text-[#1F1F1F]
-                "
+      text-[11px]
+      font-bold
+      uppercase
+      tracking-[5px]
+      text-[#1F1F1F]
+    "
               >
                 BUILT FOR DECISION-MAKERS WHO CAN’T AFFORD SLOW EXECUTION.
-              </p>
+              </motion.p>
+              {/* REVIEW */}
+              <div
+                className="
+    mt-5
 
-              {/* BUTTON */}
-              <div className="mt-10">
-                <button
-                  className="
-                    inline-flex
-                    items-center
-                    justify-center
+    inline-flex
+    max-w-full
+    flex-wrap
+    items-center
+    gap-3
 
-                    min-w-[300px]
+    rounded-[20px]
+    border
+    border-[#E8E8E8]
 
-                    rounded-[10px]
-                    bg-[#ED2024]
+    bg-white
 
-                    px-8
-                    py-4
+    px-3
+    py-2.5
 
-                    text-[15px]
-                    font-semibold
-                    text-white
+    shadow-[0_10px_30px_rgba(0,0,0,0.08)]
 
-                    shadow-[0px_12px_30px_rgba(237,32,36,0.28)]
+    sm:w-fit
+    sm:flex-nowrap
+    sm:gap-4
+    sm:rounded-full
+    sm:px-4
+    sm:py-3
+  "
+              >
+                {/* LOGOS */}
+                <div className="flex items-center">
+                  {[
+                    "/Images/bosch.webp",
+                    "/Images/reliance.webp",
+                    "/Images/tata.webp",
+                    "/Images/tvs.webp",
+                  ].map((logo, index) => (
+                    <div
+                      key={index}
+                      className="
+          -ml-1.5
+          first:ml-0
 
-                    transition-all
-                    duration-300
+          h-[34px]
+          w-[34px]
 
-                    hover:scale-[1.02]
-                    hover:bg-[#cf1a20]
-                  "
-                >
-                  Get Your Warehouse Plan & Timeline →
-                </button>
+          overflow-hidden
+          rounded-full
+
+          border-2
+          border-white
+
+          bg-white
+
+          shadow-[0_4px_12px_rgba(0,0,0,0.08)]
+
+          sm:-ml-2
+          sm:h-[42px]
+          sm:w-[42px]
+        "
+                    >
+                      <img
+                        src={logo}
+                        alt={`Logo ${index + 1}`}
+                        className="
+            h-full
+            w-full
+            object-cover
+          "
+                      />
+                    </div>
+                  ))}
+                </div>
+
+                {/* RIGHT CONTENT */}
+                <div>
+                  {/* STARS */}
+                  <div
+                    className="
+        flex
+        items-center
+        gap-1
+      "
+                  >
+                    <span className="text-[15px] text-[#FFB800] sm:text-[18px]">
+                      ★
+                    </span>
+                    <span className="text-[15px] text-[#FFB800] sm:text-[18px]">
+                      ★
+                    </span>
+                    <span className="text-[15px] text-[#FFB800] sm:text-[18px]">
+                      ★
+                    </span>
+                    <span className="text-[15px] text-[#FFB800] sm:text-[18px]">
+                      ★
+                    </span>
+                    <span className="text-[15px] text-[#FFB800] sm:text-[18px]">
+                      ★
+                    </span>
+
+                    <span
+                      className="
+          ml-1
+
+          font-manrope
+          text-[15px]
+          font-extrabold
+          leading-none
+          text-black
+
+          sm:ml-2
+          sm:text-[18px]
+        "
+                    >
+                      4.7/5
+                    </span>
+                  </div>
+
+                  {/* TEXT */}
+                  <p
+                    className="
+        mt-[2px]
+
+        font-manrope
+        text-[11px]
+        font-semibold
+        leading-[120%]
+        text-[#5F5F5F]
+
+        sm:mt-[3px]
+        sm:text-[13px]
+      "
+                  >
+                    Trusted by Industrial Clients
+                  </p>
+                </div>
               </div>
 
-              {/* STATS */}
+              {/* BUTTON */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.35 }}
+                className="
+    mt-10
+
+    flex
+    flex-col
+    gap-4
+
+    sm:flex-row
+  "
+              >
+                {/* CALL US */}
+                <a href={`tel:${PHONE_NUMBER}`} className="w-full sm:w-auto">
+                  <button
+                    className="
+        inline-flex
+        h-[58px]
+        w-full
+
+        items-center
+        justify-center
+
+        rounded-[10px]
+        border
+        border-[#1F1F1F]
+
+        bg-white
+
+        px-8
+
+        text-[15px]
+        font-semibold
+        text-[#1F1F1F]
+
+        shadow-[0px_12px_30px_rgba(0,0,0,0.08)]
+
+        transition-all
+        duration-300
+
+        hover:scale-[1.02]
+        hover:bg-[#1F1F1F]
+        hover:text-white
+
+        sm:w-[260px]
+      "
+                  >
+                    Call Us →
+                  </button>
+                </a>
+
+                {/* WHATSAPP */}
+                <a
+                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+                    WHATSAPP_MESSAGE,
+                  )}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full sm:w-auto"
+                >
+                  <button
+                    className="
+        inline-flex
+        h-[58px]
+        w-full
+
+        items-center
+        justify-center
+
+        rounded-[10px]
+        bg-[#ED2024]
+
+        px-8
+
+        text-[15px]
+        font-semibold
+        text-white
+
+        shadow-[0px_12px_30px_rgba(237,32,36,0.28)]
+
+        transition-all
+        duration-300
+
+        hover:scale-[1.02]
+        hover:bg-[#cf1a20]
+
+        sm:w-[260px]
+      "
+                  >
+                    WhatsApp Us →
+                  </button>
+                </a>
+              </motion.div>
+
               {/* DIVIDER */}
               <div
                 className="
-    mt-14
+      mt-14
 
-    h-[1px]
+      h-[1px]
 
-    w-full
-    max-w-[620px]
+      w-full
+      max-w-[620px]
 
-    bg-[#DADADA]
-  "
+      bg-[#DADADA]
+    "
               />
 
               {/* STATS */}
-              <div
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={{
+                  hidden: {},
+                  visible: {
+                    transition: {
+                      staggerChildren: 0.12,
+                    },
+                  },
+                }}
                 className="
-    mt-6
+      mt-6
 
-    grid
-    grid-cols-2
+      grid
+      grid-cols-2
 
-    gap-x-3
-    gap-y-8
+      gap-x-3
+      gap-y-8
 
-    sm:grid-cols-4
+      sm:grid-cols-4
 
-    lg:max-w-[720px]
-  "
+      lg:max-w-[720px]
+    "
               >
                 {stats.map((item, index) => (
-                  <div key={index}>
+                  <motion.div
+                    key={index}
+                    variants={{
+                      hidden: {
+                        opacity: 0,
+                        y: 40,
+                      },
+                      visible: {
+                        opacity: 1,
+                        y: 0,
+                      },
+                    }}
+                    transition={{
+                      duration: 0.6,
+                    }}
+                  >
                     {/* VALUE */}
                     <h3
                       className="
-  flex
-  items-start
+            flex
+            items-start
 
-  font-[800]
-  font-manrope
+            font-[700]
+            font-manrope
 
-  leading-[100%]
-  tracking-[-1px]
-  text-black
+            leading-[100%]
+            tracking-[-1px]
+            text-black
 
-  text-[28px]
+            text-[28px]
 
-  lg:text-[34px]
-"
+            lg:text-[34px]
+          "
                     >
                       {item.value.includes("+") ? (
                         <>
@@ -570,27 +938,27 @@ lg:min-h-[750px]
                     {/* LABEL */}
                     <p
                       className="
-                        mt-3
-                        whitespace-pre-line
+            mt-3
+            whitespace-pre-line
 
-                        text-[10px]
-                        font-semibold
-                        uppercase
+            text-[10px]
+            font-semibold
+            uppercase
 
-                        leading-[120%]
-                        tracking-[0.8px]
+            leading-[120%]
+            tracking-[0.8px]
 
-                        text-[#8A8A8A]
+            text-[#8A8A8A]
 
-                        lg:text-[11px]
-                      "
+            lg:text-[11px]
+          "
                     >
                       {item.label}
                     </p>
-                  </div>
+                  </motion.div>
                 ))}
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
 
           {/* RIGHT FORM SECTION */}
@@ -665,7 +1033,7 @@ lg:h-[565px]
                   text-[#111111]
                 "
               >
-                Request Your Project Blueprint
+                Connect with a Warehouse Expert{" "}
               </h2>
 
               <p
@@ -675,12 +1043,13 @@ lg:h-[565px]
                   text-[#7A7A7A]
                 "
               >
-                Get a custom layout, cost range & 120-day timeline
+                Plan your warehouse project with expert support for design,
+                execution, and delivery.
               </p>
 
               {/* FORM */}
               <form
-                className="mt-5 space-y-[10px]"
+                className="mt-3 space-y-[10px]"
                 onSubmit={handleSubmit}
                 noValidate
               >
@@ -899,8 +1268,24 @@ lg:h-[565px]
                 >
                   {isSubmitting
                     ? "Submitting..."
-                    : "Request Your Project Blueprint →"}
+                    : "Discuss Your Warehouse Project →"}
                 </button>
+                <p
+                  className="
+    mt-2
+        text-center
+
+
+    font-manrope
+    text-[13px]
+    font-medium
+    leading-[100%]
+    text-[#6B6B6B]
+  "
+                >
+                  100% transparent consultation with single-point project
+                  support.
+                </p>
               </form>
             </div>
           </div>

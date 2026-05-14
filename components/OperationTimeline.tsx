@@ -63,7 +63,7 @@ export default function OperationTimeline() {
             className="
               font-manrope
               text-[42px]
-              font-extrabold
+              font-bold
               leading-[44px]
               tracking-[-2px]
               text-black
@@ -86,7 +86,7 @@ export default function OperationTimeline() {
               text-[28px]
               font-bold
               leading-none
-              text-[#D71920]
+              text-[#C4161C]
 
               sm:text-[40px]
 
@@ -187,12 +187,15 @@ export default function OperationTimeline() {
                 >
                   <span
                     className="
-                      font-manrope
-                      text-[32px]
-                      font-bold
-                      leading-none
-                      text-[#8F8F8F]
-                    "
+    text-center
+
+    font-manrope
+    text-[22px]
+    font-extrabold
+    leading-[100%]
+    tracking-[0px]
+    text-[#8F8F8F]
+  "
                   >
                     {step.number}
                   </span>
