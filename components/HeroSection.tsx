@@ -740,6 +740,265 @@ lg:min-h-[750px]
                   </p>
                 </div>
               </div>
+              {/* MOBILE FORM */}
+              <div className="mt-8 block lg:hidden">
+                <div
+                  className="
+      relative
+      z-20
+
+      w-full
+
+      rounded-[22px]
+
+      border
+      border-[#E2E2E2]
+
+      bg-[rgba(255,255,255,0.92)]
+
+      px-5
+      pt-6
+      pb-6
+
+      shadow-[0px_18px_60px_rgba(0,0,0,0.08)]
+
+      backdrop-blur-md
+    "
+                >
+                  {/* TITLE */}
+                  <h2 className="text-[16px] font-bold text-[#111111]">
+                    Connect with a Warehouse Expert
+                  </h2>
+
+                  <p className="mt-2 text-[11px] text-[#7A7A7A]">
+                    Plan your warehouse project with expert support for design,
+                    execution, and delivery.
+                  </p>
+
+                  {/* FORM */}
+                  <form
+                    className="mt-4 space-y-[10px]"
+                    onSubmit={handleSubmit}
+                    noValidate
+                  >
+                    {/* NAME */}
+                    <div>
+                      <label className="mb-1 block text-[10px] font-medium text-[#444]">
+                        Name*
+                      </label>
+
+                      <input
+                        type="text"
+                        name="name"
+                        placeholder="Enter Your Name"
+                        value={formValues.name}
+                        onChange={handleInputChange}
+                        className={inputClass(formErrors.name)}
+                      />
+
+                      {formErrors.name && (
+                        <p className="mt-1 text-[11px] text-[#C4161C]">
+                          {formErrors.name}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* EMAIL */}
+                    <div>
+                      <label className="mb-1 block text-[10px] font-medium text-[#444]">
+                        Email
+                      </label>
+
+                      <input
+                        type="email"
+                        name="email"
+                        placeholder="Enter Your Email"
+                        value={formValues.email}
+                        onChange={handleInputChange}
+                        className={inputClass(formErrors.email)}
+                      />
+
+                      {formErrors.email && (
+                        <p className="mt-1 text-[11px] text-[#C4161C]">
+                          {formErrors.email}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* PHONE */}
+                    <div>
+                      <label className="mb-1 block text-[10px] font-medium text-[#444]">
+                        Phone Number*
+                      </label>
+
+                      <input
+                        type="tel"
+                        name="phoneNumber"
+                        placeholder="Enter Your Number"
+                        value={formValues.phoneNumber}
+                        onChange={handleInputChange}
+                        className={inputClass(formErrors.phoneNumber)}
+                      />
+
+                      {formErrors.phoneNumber && (
+                        <p className="mt-1 text-[11px] text-[#C4161C]">
+                          {formErrors.phoneNumber}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* COMPANY */}
+                    <div>
+                      <label className="mb-1 block text-[10px] font-medium text-[#444]">
+                        Company Name
+                      </label>
+
+                      <input
+                        type="text"
+                        name="companyName"
+                        placeholder="Enter Your Company"
+                        value={formValues.companyName}
+                        onChange={handleInputChange}
+                        className={inputClass(formErrors.companyName)}
+                      />
+                    </div>
+
+                    {/* LOCATION */}
+                    <div>
+                      <label className="mb-1 block text-[10px] font-medium text-[#444]">
+                        Location
+                      </label>
+
+                      <input
+                        type="text"
+                        name="location"
+                        placeholder="Enter Your Location"
+                        value={formValues.location}
+                        onChange={handleInputChange}
+                        className={inputClass(formErrors.location)}
+                      />
+                    </div>
+
+                    {/* SQFT */}
+                    <div>
+                      <label className="mb-1 block text-[10px] font-medium text-[#444]">
+                        Square Feet*
+                      </label>
+
+                      <select
+                        name="sqft"
+                        value={formValues.sqft}
+                        onChange={handleInputChange}
+                        className={inputClass(formErrors.sqft)}
+                      >
+                        <option value="">Choose Your (Sq.Ft.)</option>
+                        <option value="1000-5000">1000 - 5000</option>
+                        <option value="5000-10000">5000 - 10000</option>
+                        <option value="10000-50000">10000 - 50000</option>
+                        <option value="50000+">50000+</option>
+                      </select>
+
+                      {formErrors.sqft && (
+                        <p className="mt-1 text-[11px] text-[#C4161C]">
+                          {formErrors.sqft}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* PROJECT DETAILS */}
+                    <div>
+                      <label className="mb-1 block text-[10px] font-medium text-[#444]">
+                        Project Details
+                      </label>
+
+                      <textarea
+                        name="projectDetails"
+                        rows={4}
+                        placeholder="Enter Project Details"
+                        value={formValues.projectDetails}
+                        onChange={handleInputChange}
+                        className="
+            w-full
+            rounded-[8px]
+            border
+            border-[#DADADA]
+            bg-white
+            px-3
+            py-3
+            text-[12px]
+            text-black
+            outline-none
+            transition-all
+            focus:border-[#ED2024]
+          "
+                      />
+                    </div>
+
+                    {/* STATUS */}
+                    {statusMessage && (
+                      <div
+                        className={`
+            rounded-[8px]
+            border
+            px-3
+            py-2
+            text-[11px]
+            font-medium
+            ${
+              statusMessage.tone === "success"
+                ? "border-green-200 bg-green-50 text-green-700"
+                : "border-red-200 bg-red-50 text-red-700"
+            }
+          `}
+                      >
+                        {statusMessage.text}
+                      </div>
+                    )}
+
+                    {/* BUTTON */}
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="
+          mt-3
+          h-[48px]
+          w-full
+          rounded-[8px]
+          bg-[#ED2024]
+          text-[12px]
+          font-semibold
+          text-white
+          shadow-[0px_12px_30px_rgba(237,32,36,0.18)]
+          transition-all
+          duration-300
+          hover:bg-[#cf1a20]
+          disabled:cursor-not-allowed
+          disabled:opacity-70
+        "
+                    >
+                      {isSubmitting
+                        ? "Submitting..."
+                        : "Discuss Your Warehouse Project →"}
+                    </button>
+
+                    <p
+                      className="
+          mt-2
+          text-center
+
+          font-manrope
+          text-[12px]
+          font-medium
+          leading-[140%]
+          text-[#6B6B6B]
+        "
+                    >
+                      100% transparent consultation with single-point project
+                      support.
+                    </p>
+                  </form>
+                </div>
+              </div>
 
               {/* BUTTON */}
               <motion.div
@@ -964,26 +1223,28 @@ lg:min-h-[750px]
           {/* RIGHT FORM SECTION */}
           <div
             className="
-  relative
-  z-20
+    hidden
+    lg:flex
 
-  flex
-  items-start
-  justify-center
+    relative
+    z-20
 
-  min-h-[750px]
+    items-start
+    justify-center
 
-lg:pt-[92px]
+    min-h-[750px]
 
-  px-5
-  py-12
+    lg:pt-[175px]
 
-  lg:justify-start
-  lg:pl-[70px]
-  lg:pr-[80px]
-  lg:px-0
-  lg:py-0
-"
+    px-5
+    py-12
+
+    lg:justify-start
+    lg:pl-[70px]
+    lg:pr-[80px]
+    lg:px-0
+    lg:py-0
+  "
           >
             {/* MOBILE IMAGE */}
             <div className="absolute inset-0 lg:hidden">
@@ -1057,7 +1318,7 @@ lg:h-[565px]
                   {/* NAME */}
                   <div>
                     <label className="mb-1 block text-[10px] font-medium text-[#444]">
-                      Name
+                      Name*
                     </label>
 
                     <input
@@ -1103,7 +1364,7 @@ lg:h-[565px]
                   {/* PHONE */}
                   <div>
                     <label className="mb-1 block text-[10px] font-medium text-[#444]">
-                      Phone Number
+                      Phone Number*
                     </label>
 
                     <input
@@ -1171,7 +1432,7 @@ lg:h-[565px]
                   {/* SQFT */}
                   <div>
                     <label className="mb-1 block text-[10px] font-medium text-[#444]">
-                      Square Feet
+                      Square Feet*
                     </label>
 
                     <select
@@ -1584,6 +1845,19 @@ lg:h-[565px]
 
               <img
                 src="Images/tvs.webp"
+                alt="KRM"
+                className="
+          h-[70px]
+          w-auto
+          object-contain
+
+          sm:h-[85px]
+
+          lg:h-[110px]
+        "
+              />
+              <img
+                src="Images/voltas.webp"
                 alt="KRM"
                 className="
           h-[70px]
