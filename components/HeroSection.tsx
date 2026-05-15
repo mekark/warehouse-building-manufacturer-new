@@ -25,7 +25,7 @@ const stats = [
 ];
 const FORM_ENDPOINT = "/api/enquiry-form";
 
-const THANK_YOU_URL = "https://www.mekark.com/thank-you";
+const THANK_YOU_URL = "https://www.warehouse.mekark.com/thank-you";
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 type FormValues = {
