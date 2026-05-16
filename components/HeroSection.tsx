@@ -892,10 +892,10 @@ lg:min-h-[750px]
                         className={inputClass(formErrors.sqft)}
                       >
                         <option value="">Choose Your (Sq.Ft.)</option>
-                        <option value="1000-5000">1000 - 5000</option>
-                        <option value="5000-10000">5000 - 10000</option>
-                        <option value="10000-50000">10000 - 50000</option>
-                        <option value="50000+">50000+</option>
+                        <option value="10,000-20,000">10,000 - 20,000</option>
+                        <option value="20,000-30,000">20,000 - 30,000</option>
+                        <option value="30,000-50,000">30,000 - 50,000</option>
+                        <option value="50,000+">50,000+</option>
                       </select>
 
                       {formErrors.sqft && (

@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Clock3 } from "lucide-react";
+import { Clock3,} from "lucide-react";
+import Link from "next/link";
 
 const projects = [
   {
@@ -329,46 +330,47 @@ export default function ProjectsSection() {
         </motion.div>
 
         {/* BUTTON */}
-        <div
-          className="
-            mt-[60px]
-
-            flex
-            justify-center
-          "
-        >
-          <motion.button
-            whileHover={{
-              scale: 1.03,
-              y: -2,
-            }}
-            whileTap={{ scale: 0.98 }}
+        <Link href="#enquiry-form">
+          <div
             className="
-              rounded-[14px]
-              border
-              border-black
-
-              bg-white/70
-
-              px-10
-              py-5
-
-              font-manrope
-              text-[18px]
-              font-bold
-
-              text-black
-
-              transition-all
-              duration-300
-
-              hover:bg-black
-              hover:text-white
-            "
+      mt-[60px]
+      flex
+      justify-center
+    "
           >
-            View Project Breakdown →
-          </motion.button>
-        </div>
+            <motion.button
+              whileHover={{
+                scale: 1.03,
+                y: -2,
+              }}
+              whileTap={{ scale: 0.98 }}
+              className="
+        rounded-[14px]
+        border
+        border-black
+
+        bg-white/70
+
+        px-10
+        py-5
+
+        font-manrope
+        text-[18px]
+        font-bold
+
+        text-black
+
+        transition-all
+        duration-300
+
+        hover:bg-black
+        hover:text-white
+      "
+            >
+              Start Your Warehouse Project →
+            </motion.button>
+          </div>
+        </Link>
       </div>
     </motion.section>
   );

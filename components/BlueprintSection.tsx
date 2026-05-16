@@ -70,22 +70,26 @@ export default function BlueprintSection() {
 
     const phoneDigits = formValues.phoneNumber.replace(/\D/g, "");
 
+    // NAME (Mandatory)
     if (!formValues.name.trim()) {
-      errors.name = "Enter your name.";
+      errors.name = "This field is required.";
     }
 
-    if (!formValues.companyName.trim()) {
-      errors.companyName = "Enter company name.";
-    }
-
+    // PHONE (Mandatory)
     if (!formValues.phoneNumber.trim()) {
-      errors.phoneNumber = "Enter phone number.";
+      errors.phoneNumber = "This field is required.";
     } else if (phoneDigits.length < 10 || phoneDigits.length > 15) {
       errors.phoneNumber = "Enter valid phone number.";
     }
 
+    // SQFT (Mandatory)
     if (!formValues.sqft.trim()) {
-      errors.sqft = "Select warehouse size.";
+      errors.sqft = "This field is required.";
+    }
+
+    // EMAIL (Optional but validate if entered)
+    if (formValues.email.trim() && !EMAIL_REGEX.test(formValues.email)) {
+      errors.email = "Enter valid email.";
     }
 
     setFormErrors(errors);
@@ -517,7 +521,7 @@ export default function BlueprintSection() {
             {/* NAME */}
             <div>
               <label className="mb-2 block font-manrope text-[15px] font-semibold text-[#555555]">
-                Name
+                Name*
               </label>
 
               <input
@@ -579,7 +583,7 @@ export default function BlueprintSection() {
         text-[#555555]
       "
                 >
-                  Phone Number
+                  Phone Number*
                 </label>
 
                 <input
@@ -657,7 +661,7 @@ export default function BlueprintSection() {
               {/* SQFT */}
               <div>
                 <label className="mb-2 block font-manrope text-[15px] font-semibold text-[#555555]">
-                  Square Feet
+                  Square Feet*
                 </label>
 
                 <select
@@ -667,10 +671,10 @@ export default function BlueprintSection() {
                   className={inputClass(formErrors.sqft)}
                 >
                   <option value="">Choose Your (Sq.Ft.)</option>
-                  <option value="1000-5000">1000 - 5000</option>
-                  <option value="5000-10000">5000 - 10000</option>
-                  <option value="10000-50000">10000 - 50000</option>
-                  <option value="50000+">50000+</option>
+                  <option value="10,000-20,000">10,000 - 20,000</option>
+                  <option value="20,000-30,000">20,000 - 30,000</option>
+                  <option value="30,000-50,000">30,000 - 50,000</option>
+                  <option value="50,000+">50,000+</option>
                 </select>
 
                 {formErrors.sqft && (
@@ -724,9 +728,10 @@ export default function BlueprintSection() {
                   py-3
                   text-[14px]
                   font-medium
-                  ${statusMessage.tone === "success"
-                    ? "border-green-200 bg-green-50 text-green-700"
-                    : "border-red-200 bg-red-50 text-red-700"
+                  ${
+                    statusMessage.tone === "success"
+                      ? "border-green-200 bg-green-50 text-green-700"
+                      : "border-red-200 bg-red-50 text-red-700"
                   }
                 `}
               >
