@@ -23,7 +23,7 @@ const REASONS = [
   },
   {
     value: "40k+",
-    text: "PEB & Structural Steel Expertise",
+    text: "Production Capacity",
   },
   {
     value: "15+",

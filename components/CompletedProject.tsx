@@ -9,7 +9,7 @@ const projects = [
     id: "01",
     title: "Manufacturing Hub",
     location: "Chennai • Heavy-Duty PEB",
-    image: "/Images/1 (1).png",
+    image: "/Images/1.png",
   },
   {
     id: "02",

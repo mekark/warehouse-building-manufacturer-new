@@ -451,7 +451,7 @@ lg:min-h-[750px]
         sm:tracking-[2px]
       "
                   >
-                    India’s No.1 PEB Warehouse Construction Company
+                    INDIA’S NO.1 WAREHOUSE DESIGN & BUILD TURNKEY COMPANY
                   </span>
                 </div>
               </motion.div>
@@ -531,9 +531,10 @@ lg:min-h-[750px]
       text-[#5F5F5F]
     "
               >
-                From concept to operational warehouse — Mekark delivers turnkey
-                warehouse construction including design, PEB manufacturing,
-                civil execution, MEP, and final handover.
+                From concept to operational warehouse, Mekark is a leading
+                warehouse construction company delivering industrial warehouse
+                construction, turnkey warehouse design and build company
+                solutions, and PEB warehouse construction.
               </motion.p>
 
               <motion.div
@@ -547,9 +548,10 @@ lg:min-h-[750px]
   "
               >
                 {[
-                  "End-to-End Project Ownership",
-                  "Transparent Cost & No Hidden Charges",
-                  "Timeline Management",
+                  "Automation-Ready Warehouse Infrastructure",
+                  "Turnkey Warehouse Construction Services",
+                  "PEB Warehouse Construction Experts",
+                  "End-to-End Warehouse Design & Build",
                 ].map((item, index) => (
                   <div
                     key={index}
@@ -1442,10 +1444,10 @@ lg:h-[565px]
                       className={inputClass(formErrors.sqft)}
                     >
                       <option value="">Choose Your (Sq.Ft.)</option>
-                      <option value="1000-5000">1000 - 5000</option>
-                      <option value="5000-10000">5000 - 10000</option>
-                      <option value="10000-50000">10000 - 50000</option>
-                      <option value="50000+">50000+</option>
+                      <option value="10,000-20,000">10,000 - 20,000</option>
+                      <option value="20,000-30,000">20,000 - 30,000</option>
+                      <option value="30,000-50,000">30,000 - 50,000</option>
+                      <option value="50,000+">50,000+</option>
                     </select>
 
                     {formErrors.sqft && (

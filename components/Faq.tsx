@@ -1,45 +1,137 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
 import { Plus, X } from "lucide-react";
 
 const FAQS = [
   {
     question:
-      "Why choose Mekark as a warehouse building contractor in Chennai?",
+      "What makes Mekark a trusted warehouse construction company?",
     answer:
-      "We offer complete control — from design to delivery — ensuring faster execution and zero dependency on third-party vendors. Our in-house 6 lakh sq.ft facility is the backbone of this model.",
+      "Mekark delivers end-to-end warehouse construction services including warehouse design & build, PEB warehouse construction, steel warehouse construction, civil execution, MEP, and turnkey project delivery under one roof.",
   },
+
   {
-    question: "Do you provide turnkey warehouse construction?",
+    question:
+      "Do you provide turnkey warehouse construction solutions?",
     answer:
-      "Yes. We handle design, engineering, fabrication, civil execution, and project delivery under one integrated execution model.",
+      "Yes. Mekark specializes in turnkey warehouse construction solutions covering planning, design, engineering, PEB manufacturing, civil works, structural execution, and final handover.",
   },
+
   {
-    question: "What is PEB warehouse construction?",
+    question:
+      "What industries do you serve for industrial warehouse construction?",
     answer:
-      "PEB stands for Pre-Engineered Building — a faster and more efficient construction approach for industrial and warehouse projects.",
+      "We provide industrial warehouse construction solutions for logistics, e-commerce, manufacturing, FMCG, cold storage, automotive, engineering, and industrial sectors.",
   },
+
   {
-    question: "How fast can you complete a warehouse project?",
+    question:
+      "What is included in your warehouse design & build solutions?",
     answer:
-      "Most warehouse projects are delivered within a 120-day fast-track execution timeline depending on project scale.",
+      "Our warehouse design & build solutions include layout planning, structural engineering, PEB warehouse construction, civil execution, utility planning, ventilation, docking integration, and future-ready warehouse infrastructure.",
   },
+
   {
-    question: "Do you operate across Tamil Nadu and India?",
+    question:
+      "Why choose PEB warehouse construction for industrial projects?",
     answer:
-      "Yes. We execute warehouse and industrial infrastructure projects across Tamil Nadu and multiple locations across India.",
+      "PEB warehouse construction offers faster execution, cost efficiency, large-span layouts, scalability, durability, and reduced maintenance compared to conventional construction methods.",
   },
+
   {
-    question: "Can you customize warehouse design for our operations?",
+    question:
+      "Do you provide steel warehouse construction services?",
     answer:
-      "Absolutely. Our layouts are tailored for logistics flow, storage systems, automation requirements, and operational efficiency.",
+      "Yes. Mekark delivers steel warehouse construction solutions using high-quality structural steel systems designed for heavy-duty industrial and logistics operations.",
+  },
+];
+
+const testimonials = [
+  {
+    quote: (
+      <>
+        “Mekark delivered our{" "}
+        <span className="text-[#ED2024]">
+          industrial warehouse construction
+        </span>{" "}
+        project ahead of schedule with complete control over quality, execution,
+        and coordination.
+        <br />
+      </>
+    ),
+    initials: "OH",
+    role: "Operations Head",
+    company: "Logistics & Supply Chain Company",
+  },
+
+  {
+    quote: (
+      <>
+        “We were looking for a{" "}
+        <span className="text-[#ED2024]">
+          warehouse design and build company
+        </span>{" "}
+        that could handle everything under one roof.
+        <br />
+        Mekark’s{" "}
+        <span className="font-light text-[#8F8F8F]">
+          turnkey warehouse construction services
+        </span>{" "}
+        and in-house manufacturing capabilities were exactly what we needed.”
+      </>
+    ),
+    initials: "DR",
+    role: "Director",
+    company: "Manufacturing Company",
+  },
+
+  {
+    quote: (
+      <>
+        “Mekark’s{" "}
+        <span className="text-[#ED2024]">
+          PEB warehouse construction expertise
+        </span>{" "}
+        and industrial warehouse turnkey solutions helped us scale our storage
+        infrastructure without delays.
+        <br />
+      </>
+    ),
+    initials: "FM",
+    role: "Facility Manager",
+    company: "E-Commerce & Retail Company",
+  },
+
+  {
+    quote: (
+      <>
+        “Their{" "}
+        <span className="text-[#ED2024]">
+          end-to-end warehouse construction services
+        </span>
+        , fast execution, and strong coordination made the entire project
+        seamless.
+        <br />
+      </>
+    ),
+    initials: "PH",
+    role: "Project Head",
+    company: "FMCG Distribution Company",
   },
 ];
 
 export default function FAQSection() {
   const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActive((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <motion.section
@@ -139,71 +231,68 @@ export default function FAQSection() {
               </span>
             </motion.div>
 
-            {/* QUOTE */}
-            <motion.h2
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="
-    max-w-[928px]
+            <section className="relative overflow-hidden py-16 sm:py-24">
+              <div className="mx-auto max-w-7xl px-6 lg:px-10">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={active}
+                    initial={{ opacity: 0, y: 60 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -40 }}
+                    transition={{ duration: 0.7 }}
+                  >
+                    {/* QUOTE */}
+                    <motion.h2
+                      initial={{ opacity: 0, y: 50 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.8 }}
+                      className="
+                max-w-[950px]
 
-    font-manrope
-    text-[32px]
-    font-bold
-    leading-[36px]
-    tracking-[-1.6px]
-    text-black
+                font-manrope
+                text-[28px]
+                font-bold
+                leading-[40px]
+                tracking-[-1px]
+                text-black
 
-    sm:text-[44px]
-    sm:leading-[48px]
-    sm:tracking-[-2px]
+                sm:text-[42px]
+                sm:leading-[54px]
 
-    lg:text-[56.2px]
-    lg:leading-[57.12px]
-    lg:tracking-[-2.72px]
-  "
-            >
-              “Mekark delivered{" "}
-              <span className="text-[#ED2024]">ahead of schedule</span>
-              <br />
-              with complete control over quality and
-              <br />
-              execution. Their{" "}
-              <span className="font-light text-[#8F8F8F]">
-                in-house capability
-              </span>{" "}
-              is a
-              <br />
-              major advantage.”
-            </motion.h2>
+                lg:text-[46px]
+                lg:leading-[50px]
+                lg:tracking-[-2px]
+              "
+                    >
+                      {testimonials[active].quote}
+                    </motion.h2>
 
-            {/* AUTHOR */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="
+                    {/* AUTHOR */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.2 }}
+                      className="
                 mt-10
                 flex
                 items-center
                 gap-4
               "
-            >
-              <motion.div
-                whileHover={{
-                  scale: 1.08,
-                  rotate: -3,
-                }}
-                className="
+                    >
+                      {/* INITIALS */}
+                      <motion.div
+                        whileHover={{
+                          scale: 1.08,
+                          rotate: -3,
+                        }}
+                        className="
                   flex
                   h-[56px]
                   w-[56px]
                   items-center
                   justify-center
 
-                  rounded-sm
+                  rounded-xl
                   bg-[#ED2024]
 
                   font-manrope
@@ -211,24 +300,25 @@ export default function FAQSection() {
                   font-bold
                   text-white
                 "
-              >
-                OH
-              </motion.div>
+                      >
+                        {testimonials[active].initials}
+                      </motion.div>
 
-              <div>
-                <p
-                  className="
+                      {/* DETAILS */}
+                      <div>
+                        <p
+                          className="
                     font-manrope
                     text-[16px]
                     font-bold
                     text-black
                   "
-                >
-                  Operations Head
-                </p>
+                        >
+                          {testimonials[active].role}
+                        </p>
 
-                <p
-                  className="
+                        <p
+                          className="
                     mt-1
 
                     font-manrope
@@ -236,11 +326,36 @@ export default function FAQSection() {
                     font-normal
                     text-[#8B8B8B]
                   "
-                >
-                  Logistics Company
-                </p>
+                        >
+                          {testimonials[active].company}
+                        </p>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* DOTS */}
+                <div className="mt-12 flex items-center gap-3">
+                  {testimonials.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setActive(index)}
+                      className={`
+                transition-all duration-300
+
+                ${
+                  active === index
+                    ? "h-[10px] w-[42px] bg-[#ED2024]"
+                    : "h-[10px] w-[10px] bg-[#D0D0D0]"
+                }
+
+                rounded-full
+              `}
+                    />
+                  ))}
+                </div>
               </div>
-            </motion.div>
+            </section>
           </div>
 
           {/* RIGHT QUOTE */}

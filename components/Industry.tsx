@@ -15,38 +15,38 @@ const industries = [
     icon: Truck,
     title: "Logistics & 3PL",
     description:
-      "High-movement warehouses designed for cross-docking, fleet flow, and zero bottlenecks — keeping supply chains continuously active.",
+      "Automation-ready logistics warehouses built for fast-moving supply chain operations.",
     glow: true,
   },
   {
     icon: Package,
     title: "E-Commerce & Retail",
     description:
-      "Engineered for rapid picking, sorting, and dispatch — supporting high-volume order cycles and peak demand scalability.",
+      "Warehouse design & build solutions for rapid fulfillment, sorting, and dispatch operations.",
   },
   {
     icon: Factory,
     title: "Manufacturing & Industrial",
     description:
-      "Heavy-duty structures built to handle machinery, raw materials, and uninterrupted production flow.",
+      "Industrial warehouse construction solutions for manufacturing, machinery, and production facilities.",
   },
   {
     icon: ShoppingCart,
     title: "FMCG & Consumer Goods",
     description:
-      "Designed for high turnover environments — enabling faster movement, dense storage, and efficient distribution.",
+      "PEB warehouse construction for high-volume storage and distribution operations.",
   },
   {
     icon: Snowflake,
     title: "Cold Storage & Food",
     description:
-      "Insulation-ready PEB construction for temperature control, hygiene compliance, and operational stability.",
+      "Temperature-controlled warehouse design & build solutions with insulation-ready PEB structures",
   },
   {
     icon: Car,
     title: "Automotive & Engineering",
     description:
-      "Large-span steel structures for bulky components, equipment storage, and integrated operations.",
+      "Steel warehouse construction solutions for heavy equipment and industrial operations.",
   },
 ];
 
@@ -141,8 +141,9 @@ export default function Industry() {
               lg:text-[20px]
             "
           >
-            As a leading warehouse construction company in Chennai, Mekark
-            delivers fully integrated warehouse construction services.
+            Mekark delivers turnkey warehouse construction, PEB warehouse
+            construction, and industrial warehouse design & build solutions for
+            diverse industries
           </p>
         </motion.div>
 
@@ -202,11 +203,7 @@ export default function Industry() {
                   duration-500
                   hover:border-[#FF1E1E]
 
-                  ${
-                    industry.glow
-                      ? "shadow-[0_0_80px_rgba(255,0,0,0.18)]"
-                      : ""
-                  }
+                  ${industry.glow ? "shadow-[0_0_80px_rgba(255,0,0,0.18)]" : ""}
                 `}
               >
                 {/* Glow */}
@@ -244,11 +241,7 @@ export default function Industry() {
                     shadow-[0_0_40px_rgba(255,0,0,0.35)]
                   "
                 >
-                  <Icon
-                    size={34}
-                    className="text-white"
-                    strokeWidth={2.3}
-                  />
+                  <Icon size={34} className="text-white" strokeWidth={2.3} />
                 </motion.div>
 
                 {/* Title */}

@@ -17,49 +17,49 @@ const services = [
     icon: Building2,
     title: "Turnkey Warehouse Construction",
     description:
-      "Single-point responsibility from design to delivery — eliminating coordination gaps.",
+      "Single-point responsibility for industrial warehouse construction from design to final delivery.",
   },
   {
     icon: Layers3,
     title: "PEB Warehouse Construction",
     description:
-      "Fast, durable pre-engineered warehouse buildings designed for modern industrial use.",
+      "Fast, durable pre-engineered warehouse buildings for modern industrial warehouse operations.",
   },
   {
     icon: Ruler,
     title: "Custom Design & Build",
     description:
-      "Operationally optimized layouts tailored to your business flow — not generic templates.",
+      "Warehouse design & build solutions tailored for logistics, manufacturing, and industrial operations.",
   },
   {
     icon: ShieldCheck,
     title: "Industrial Steel Warehouse Structures",
     description:
-      "Heavy-load, high-durability steel warehouse construction for demanding environments.",
+      "Heavy-duty steel warehouse construction for demanding industrial environments.",
   },
   {
     icon: Factory,
     title: "In-House PEB Manufacturing",
     description:
-      "Complete control over pre-engineered steel warehouse structures — faster delivery, consistent quality.",
+      "Complete control over pre-engineered steel warehouse manufacturing with consistent quality delivery.",
   },
   {
     icon: Hammer,
     title: "Civil & Structural Execution",
     description:
-      "Foundations, flooring, and structures aligned with real operational requirements.",
+      "End-to-end warehouse construction services including foundations, flooring, and structural execution.",
   },
   {
     icon: Boxes,
     title: "Multi-Level & Mezzanine Solutions",
     description:
-      "Maximize storage capacity with scalable vertical expansion options.",
+      "Scalable warehouse infrastructure solutions designed to maximize industrial storage capacity.",
   },
   {
     icon: Truck,
-    title: "Logistics Integration",
+    title: "Warehouse Racking Solutions",
     description:
-      "Docking bays, airflow systems, insulation, and movement planning — built into the core design.",
+      "Smart warehouse racking solutions designed for high-density storage, inventory management, and efficient warehouse operations.",
   },
 ];
 
