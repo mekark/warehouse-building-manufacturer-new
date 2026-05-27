@@ -133,6 +133,14 @@ export default function HeroSection() {
       setIsSubmitting(true);
 
       setStatusMessage(null);
+      const sourceDomain =
+        typeof window !== "undefined" ? window.location.hostname : "";
+
+      let sourceName = "Main Website";
+
+      if (sourceDomain.includes("warehouse")) {
+        sourceName = "Warehouse Division";
+      }
 
       const response = await fetch(FORM_ENDPOINT, {
         method: "POST",
@@ -147,6 +155,8 @@ export default function HeroSection() {
           location: formValues.location.trim(),
           sqft: formValues.sqft.trim(),
           projectDetails: formValues.projectDetails.trim(),
+          sourceName,
+          sourceDomain,
         }),
       });
 
