@@ -153,8 +153,8 @@ export default function HeroSection() {
           phone: formValues.phoneNumber.trim(),
           company: formValues.companyName.trim(),
           location: formValues.location.trim(),
-          sqft: formValues.sqft.trim(),
-          projectDetails: formValues.projectDetails.trim(),
+          sqf: formValues.sqft.trim(),
+          message: formValues.projectDetails.trim(),
           sourceName,
           sourceDomain,
         }),
@@ -847,6 +847,7 @@ lg:min-h-[750px]
                         type="tel"
                         name="phoneNumber"
                         placeholder="Enter Your Number"
+                        maxLength={10}
                         value={formValues.phoneNumber}
                         onChange={handleInputChange}
                         className={inputClass(formErrors.phoneNumber)}
