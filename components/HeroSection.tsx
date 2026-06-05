@@ -1383,6 +1383,7 @@ lg:h-[565px]
                     <input
                       type="tel"
                       name="phoneNumber"
+                      maxLength={10}
                       placeholder="Enter Your Number"
                       value={formValues.phoneNumber}
                       onChange={handleInputChange}
