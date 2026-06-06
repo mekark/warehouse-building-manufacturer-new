@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const UPSTREAM_ENDPOINT =
-  "https://mekark-mail.onrender.com/api/enquiry-form";
+const UPSTREAM_ENDPOINT = "https://mekark-mail.onrender.com/api/enquiry-form";
 
 function resolveUpstreamOrigin(request: NextRequest) {
   const directOrigin = request.headers.get("origin");
@@ -11,11 +10,9 @@ function resolveUpstreamOrigin(request: NextRequest) {
   }
 
   const forwardedHost =
-    request.headers.get("x-forwarded-host") ||
-    request.headers.get("host");
+    request.headers.get("x-forwarded-host") || request.headers.get("host");
 
-  const forwardedProto =
-    request.headers.get("x-forwarded-proto") || "https";
+  const forwardedProto = request.headers.get("x-forwarded-proto") || "https";
 
   if (forwardedHost) {
     return `${forwardedProto}://${forwardedHost}`;
@@ -39,11 +36,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const upstreamOrigin =
-      resolveUpstreamOrigin(request);
+    const upstreamOrigin = resolveUpstreamOrigin(request);
 
     // FIRE & FORGET
-    fetch(UPSTREAM_ENDPOINT, {
+    const response = await fetch(UPSTREAM_ENDPOINT, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -52,19 +48,29 @@ export async function POST(request: NextRequest) {
       },
       body: JSON.stringify(body),
       cache: "no-store",
-    }).catch((error) => {
-      console.error("Upstream error:", error);
     });
 
-    // RETURN IMMEDIATELY
-    return NextResponse.json(
-      {
-        success: true,
-      },
-      {
-        status: 200,
-      },
-    );
+    const responseText = await response.text();
+
+    console.log("UPSTREAM STATUS:", response.status);
+    console.log("UPSTREAM RESPONSE:", responseText);
+
+    if (!response.ok) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Upstream failed",
+        },
+        {
+          status: 500,
+        },
+      );
+    }
+
+    return NextResponse.json({
+      success: true,
+    });
+
   } catch (error) {
     console.error("API route error:", error);
 
