@@ -127,8 +127,8 @@ export default function BlueprintSection() {
           phone: formValues.phoneNumber.trim(),
           company: formValues.companyName.trim(),
           location: formValues.location.trim(),
-          sqft: formValues.sqft.trim(),
-          projectDetails: formValues.projectDetails.trim(),
+          sqf: formValues.sqft.trim(),
+          message: formValues.projectDetails.trim(),
         }),
       });
 
@@ -334,6 +334,7 @@ export default function BlueprintSection() {
                       text-[#ED2024]
                     "
                     strokeWidth={2.2}
+                    
                   />
 
                   <div>
@@ -590,6 +591,7 @@ export default function BlueprintSection() {
                   type="tel"
                   name="phoneNumber"
                   placeholder="Enter Your Number"
+                  maxLength={10}
                   value={formValues.phoneNumber}
                   onChange={handleInputChange}
                   className={inputClass(formErrors.phoneNumber)}
