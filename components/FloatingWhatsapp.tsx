@@ -15,18 +15,22 @@ export default function FloatingWhatsApp() {
   return (
     <div
       className="
-        fixed
-        bottom-5
-        right-5
-        z-[70]
+    fixed
+    z-[70]
 
-        flex
-        flex-col
-        gap-3
+    flex
+    flex-col
+    gap-3
 
-        sm:bottom-6
-        sm:right-6
-      "
+    bottom-[100px]
+    right-4
+
+    sm:bottom-[120px]
+    sm:right-5
+
+    lg:bottom-[100px]
+    lg:right-6
+  "
     >
       {/* CALL BUTTON */}
       <a
