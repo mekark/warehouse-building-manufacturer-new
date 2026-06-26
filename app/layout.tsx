@@ -25,9 +25,9 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Mekark Structures Pvt. Ltd.",
+  title: "Mekark Warehouse Construction | Turnkey Industrial Warehouse Design & Build",
   description:
-    "Mekark delivers industrial construction solutions for factories, plant infrastructure, utility systems, and manufacturing facilities.",
+    "Mekark delivers turnkey warehouse construction, PEB warehouse construction, and industrial warehouse design & build solutions across India.",
   icons: {
     icon: "/Images/LogoMekark.png",
     shortcut: "/Images/LogoMekark.png",

@@ -25,6 +25,20 @@ const stats = [
 ];
 const FORM_ENDPOINT = "/api/enquiry-form";
 
+const START_TIMELINES = [
+  "Immediately",
+  "Within 1 Month",
+  "Within 3 Months",
+  "Planning for Future",
+];
+
+const BUDGETS = [
+  "Below ₹50 Lakhs",
+  "₹50 Lakhs – ₹1 Crore",
+  "₹1 Crore – ₹5 Crores",
+  "Above ₹5 Crores",
+];
+
 const THANK_YOU_URL = "https://warehouse.mekark.com/thank-you";
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -35,6 +49,8 @@ type FormValues = {
   companyName: string;
   location: string;
   sqft: string;
+  startTimeline: string;
+  budget: string;
   projectDetails: string;
 };
 
@@ -47,6 +63,8 @@ const INITIAL_FORM_VALUES: FormValues = {
   companyName: "",
   location: "",
   sqft: "",
+  startTimeline: "",
+  budget: "",
   projectDetails: "",
 };
 
@@ -105,6 +123,14 @@ export default function HeroSection() {
       errors.sqft = "This field is required.";
     }
 
+    if (!formValues.startTimeline.trim()) {
+      errors.startTimeline = "Please select a project start timeline";
+    }
+
+    if (!formValues.budget.trim()) {
+      errors.budget = "Please select a project budget";
+    }
+
     // EMAIL (Optional but validate if entered)
     if (formValues.email.trim() && !EMAIL_REGEX.test(formValues.email)) {
       errors.email = "Enter valid email.";
@@ -136,11 +162,7 @@ export default function HeroSection() {
       const sourceDomain =
         typeof window !== "undefined" ? window.location.hostname : "";
 
-      let sourceName = "Main Website";
-
-      if (sourceDomain.includes("warehouse")) {
-        sourceName = "Warehouse Division";
-      }
+      const sourceName = "Warehouse Division";
 
       const response = await fetch(FORM_ENDPOINT, {
         method: "POST",
@@ -154,6 +176,8 @@ export default function HeroSection() {
           company: formValues.companyName.trim(),
           location: formValues.location.trim(),
           sqf: formValues.sqft.trim(),
+          startTimeline: formValues.startTimeline.trim(),
+          budget: formValues.budget.trim(),
           message: formValues.projectDetails.trim(),
           sourceName,
           sourceDomain,
@@ -296,7 +320,7 @@ export default function HeroSection() {
             grid-cols-1
 
 lg:grid-cols-[58%_42%]
-lg:min-h-[750px]
+lg:min-h-[850px]
           "
         >
           {/* RIGHT IMAGE */}
@@ -918,6 +942,60 @@ lg:min-h-[750px]
                       )}
                     </div>
 
+                    {/* START TIMELINE */}
+                    <div>
+                      <label className="mb-1 block text-[10px] font-medium text-[#444]">
+                        Project Start Timeline *
+                      </label>
+
+                      <select
+                        name="startTimeline"
+                        value={formValues.startTimeline}
+                        onChange={handleInputChange}
+                        className={inputClass(formErrors.startTimeline)}
+                      >
+                        <option value="">Select timeline</option>
+                        {START_TIMELINES.map((timeline) => (
+                          <option key={timeline} value={timeline}>
+                            {timeline}
+                          </option>
+                        ))}
+                      </select>
+
+                      {formErrors.startTimeline && (
+                        <p className="mt-1 text-[11px] text-[#C4161C]">
+                          {formErrors.startTimeline}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* BUDGET */}
+                    <div>
+                      <label className="mb-1 block text-[10px] font-medium text-[#444]">
+                        Project Budget *
+                      </label>
+
+                      <select
+                        name="budget"
+                        value={formValues.budget}
+                        onChange={handleInputChange}
+                        className={inputClass(formErrors.budget)}
+                      >
+                        <option value="">Select budget range</option>
+                        {BUDGETS.map((budget) => (
+                          <option key={budget} value={budget}>
+                            {budget}
+                          </option>
+                        ))}
+                      </select>
+
+                      {formErrors.budget && (
+                        <p className="mt-1 text-[11px] text-[#C4161C]">
+                          {formErrors.budget}
+                        </p>
+                      )}
+                    </div>
+
                     {/* PROJECT DETAILS */}
                     <div>
                       <label className="mb-1 block text-[10px] font-medium text-[#444]">
@@ -1245,7 +1323,7 @@ lg:min-h-[750px]
     items-start
     justify-center
 
-    min-h-[750px]
+    min-h-[850px]
 
     lg:pt-[175px]
 
@@ -1281,7 +1359,7 @@ lg:min-h-[750px]
                 w-full
 
 lg:w-[500px]
-lg:h-[565px]
+lg:min-h-[680px]
 
                 rounded-[22px]
 
@@ -1465,6 +1543,62 @@ lg:h-[565px]
                     {formErrors.sqft && (
                       <p className="mt-1 text-[11px] text-[#C4161C]">
                         {formErrors.sqft}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
+                  {/* START TIMELINE */}
+                  <div>
+                    <label className="mb-1 block text-[10px] font-medium text-[#444]">
+                      Project Start Timeline *
+                    </label>
+
+                    <select
+                      name="startTimeline"
+                      value={formValues.startTimeline}
+                      onChange={handleInputChange}
+                      className={inputClass(formErrors.startTimeline)}
+                    >
+                      <option value="">Select timeline</option>
+                      {START_TIMELINES.map((timeline) => (
+                        <option key={timeline} value={timeline}>
+                          {timeline}
+                        </option>
+                      ))}
+                    </select>
+
+                    {formErrors.startTimeline && (
+                      <p className="mt-1 text-[11px] text-[#C4161C]">
+                        {formErrors.startTimeline}
+                      </p>
+                    )}
+                  </div>
+
+                  {/* BUDGET */}
+                  <div>
+                    <label className="mb-1 block text-[10px] font-medium text-[#444]">
+                      Project Budget *
+                    </label>
+
+                    <select
+                      name="budget"
+                      value={formValues.budget}
+                      onChange={handleInputChange}
+                      className={inputClass(formErrors.budget)}
+                    >
+                      <option value="">Select budget range</option>
+                      {BUDGETS.map((budget) => (
+                        <option key={budget} value={budget}>
+                          {budget}
+                        </option>
+                      ))}
+                    </select>
+
+                    {formErrors.budget && (
+                      <p className="mt-1 text-[11px] text-[#C4161C]">
+                        {formErrors.budget}
                       </p>
                     )}
                   </div>

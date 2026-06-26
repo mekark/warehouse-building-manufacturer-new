@@ -11,7 +11,21 @@ const FEATURES = [
 ];
 
 const FORM_ENDPOINT = "/api/enquiry-form";
-const THANK_YOU_URL = "https://www.mekark.com/thank-you";
+const THANK_YOU_URL = "https://warehouse.mekark.com/thank-you";
+
+const START_TIMELINES = [
+  "Immediately",
+  "Within 1 Month",
+  "Within 3 Months",
+  "Planning for Future",
+];
+
+const BUDGETS = [
+  "Below ₹50 Lakhs",
+  "₹50 Lakhs – ₹1 Crore",
+  "₹1 Crore – ₹5 Crores",
+  "Above ₹5 Crores",
+];
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -22,6 +36,8 @@ type FormValues = {
   companyName: string;
   location: string;
   sqft: string;
+  startTimeline: string;
+  budget: string;
   projectDetails: string;
 };
 
@@ -34,6 +50,8 @@ const INITIAL_FORM_VALUES: FormValues = {
   companyName: "",
   location: "",
   sqft: "",
+  startTimeline: "",
+  budget: "",
   projectDetails: "",
 };
 
@@ -87,6 +105,14 @@ export default function BlueprintSection() {
       errors.sqft = "This field is required.";
     }
 
+    if (!formValues.startTimeline.trim()) {
+      errors.startTimeline = "Please select a project start timeline";
+    }
+
+    if (!formValues.budget.trim()) {
+      errors.budget = "Please select a project budget";
+    }
+
     // EMAIL (Optional but validate if entered)
     if (formValues.email.trim() && !EMAIL_REGEX.test(formValues.email)) {
       errors.email = "Enter valid email.";
@@ -116,6 +142,11 @@ export default function BlueprintSection() {
 
       setStatusMessage(null);
 
+      const sourceDomain =
+        typeof window !== "undefined" ? window.location.hostname : "";
+
+      const sourceName = "Warehouse Division";
+
       const response = await fetch(FORM_ENDPOINT, {
         method: "POST",
         headers: {
@@ -128,7 +159,11 @@ export default function BlueprintSection() {
           company: formValues.companyName.trim(),
           location: formValues.location.trim(),
           sqf: formValues.sqft.trim(),
+          startTimeline: formValues.startTimeline.trim(),
+          budget: formValues.budget.trim(),
           message: formValues.projectDetails.trim(),
+          sourceName,
+          sourceDomain,
         }),
       });
 
@@ -682,6 +717,62 @@ export default function BlueprintSection() {
                 {formErrors.sqft && (
                   <p className="mt-2 text-[13px] text-[#C4161C]">
                     {formErrors.sqft}
+                  </p>
+                )}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+              {/* START TIMELINE */}
+              <div>
+                <label className="mb-2 block font-manrope text-[15px] font-semibold text-[#555555]">
+                  Project Start Timeline *
+                </label>
+
+                <select
+                  name="startTimeline"
+                  value={formValues.startTimeline}
+                  onChange={handleInputChange}
+                  className={inputClass(formErrors.startTimeline)}
+                >
+                  <option value="">Select timeline</option>
+                  {START_TIMELINES.map((timeline) => (
+                    <option key={timeline} value={timeline}>
+                      {timeline}
+                    </option>
+                  ))}
+                </select>
+
+                {formErrors.startTimeline && (
+                  <p className="mt-2 text-[13px] text-[#C4161C]">
+                    {formErrors.startTimeline}
+                  </p>
+                )}
+              </div>
+
+              {/* BUDGET */}
+              <div>
+                <label className="mb-2 block font-manrope text-[15px] font-semibold text-[#555555]">
+                  Project Budget *
+                </label>
+
+                <select
+                  name="budget"
+                  value={formValues.budget}
+                  onChange={handleInputChange}
+                  className={inputClass(formErrors.budget)}
+                >
+                  <option value="">Select budget range</option>
+                  {BUDGETS.map((budget) => (
+                    <option key={budget} value={budget}>
+                      {budget}
+                    </option>
+                  ))}
+                </select>
+
+                {formErrors.budget && (
+                  <p className="mt-2 text-[13px] text-[#C4161C]">
+                    {formErrors.budget}
                   </p>
                 )}
               </div>
